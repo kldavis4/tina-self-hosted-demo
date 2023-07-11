@@ -60,7 +60,25 @@ yarn dev
 ```
 
 Run the project locally with Next Auth and Vercel KV:
+
 > This will start TinaCMS in "Production Mode", meaning all changes will be made to the Vercel KV, and github. Database and auth is required.
+
+First add the following environment variables to your `.env` file:
+
+```env
+# The key you want to use for storing user credentials in the KV databas
+NEXTAUTH_CREDENTIALS_KEY=tinacms_users
+
+
+# Get these from vercel if you want to run yarn dev:prod
+KV_URL=***
+KV_REST_API_URL=***
+KV_REST_API_TOKEN=***
+KV_REST_API_READ_ONLY_TOKEN=***
+```
+
+Then run the following command:
+
 ```
 yarn dev:prod
 ```
