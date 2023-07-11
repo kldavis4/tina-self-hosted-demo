@@ -53,8 +53,16 @@ yarn install
 
 Run the project locally:
 
+> This will start TinaCMS in "Local Mode", meaning all changes will be made to the local file system and no auth is required.
+
 ```
 yarn dev
+```
+
+Run the project locally with Next Auth and Vercel KV:
+> This will start TinaCMS in "Production Mode", meaning all changes will be made to the Vercel KV, and github. Database and auth is required.
+```
+yarn dev:prod
 ```
 
 ## Environment Variables
