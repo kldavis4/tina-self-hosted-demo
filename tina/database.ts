@@ -5,6 +5,7 @@ import { Octokit } from '@octokit/rest'
 import { Base64 } from 'js-base64'
 import path from 'path'
 import fs from 'fs'
+import { undefined } from "zod";
 
 // Manage this flag in your CI/CD pipeline and make sure it is set to false in production
 const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === 'true'
@@ -100,7 +101,9 @@ const localOnDelete = async (key) => {
 }
 
 export default createDatabase({
-  level: isLocal ? localLevelStore : redisLevelStore,
-  onPut: isLocal ? localOnPut : githubOnPut,
-  onDelete: isLocal ? localOnDelete : githubOnDelete,
+  databaseAdapter: isLocal ? localLevelStore : redisLevelStore,
+  gitProvider: {
+    onPut: isLocal ? localOnPut : githubOnPut,
+    onDelete: isLocal ? localOnDelete : githubOnDelete,
+  },
 })
