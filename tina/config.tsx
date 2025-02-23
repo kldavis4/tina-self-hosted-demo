@@ -9,7 +9,7 @@ import { getSession, signIn, signOut } from "next-auth/react";
 
 const isLocal = process.env.TINA_PUBLIC_IS_LOCAL === "true"
 const config = defineConfig({
-  contentApiUrlOverride: "https://tina-self-hosted-demo-27jfyp73y-kelly-davis-projects.vercel.app/api/gql",
+  contentApiUrlOverride: "/api/gql",
   admin: {
     auth: {
       useLocalAuth: isLocal,
